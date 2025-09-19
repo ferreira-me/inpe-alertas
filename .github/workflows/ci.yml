@@ -1,18 +1,18 @@
-# .github/workflows/ci.yml
 name: CI Simples
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ dev ]
+    branches: [ "main", "dev" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositório
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Teste de funcionamento
-        run: echo "CI funcionando no projeto INPE!"
+      - name: Teste
+        run: echo "CI rodando!"
