@@ -2,9 +2,9 @@ name: CI Simples
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -14,5 +14,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Teste
-        run: echo "CI rodando!"
+      - name: Teste de funcionamento
+        run: echo "CI rodando na MAIN!"
