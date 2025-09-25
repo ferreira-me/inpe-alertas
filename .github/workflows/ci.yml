@@ -1,0 +1,14 @@
+name: CI Simples
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+      - name: Teste de funcionamento
+        run: echo "CI funcionando no projeto INPE!"
