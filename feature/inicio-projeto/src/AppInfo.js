@@ -1,1 +1,2 @@
-const NOME_APP = 'INPE Alertas'; // ajuste o texto se quiser
+const NOME_APP = 'INPE Alertas';
+export const APP_NAME = NOME_APP;
