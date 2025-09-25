@@ -5,3 +5,4 @@
 tempo real!!!
 
 CI/CD configurado – teste de execução.
+Teste do CI via Pull Request.
