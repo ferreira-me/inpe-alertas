@@ -1,0 +1,13 @@
+{
+  "name": "inpe-alertas",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier . -w",
+    "format:check": "prettier . -c"
+  }
+}
