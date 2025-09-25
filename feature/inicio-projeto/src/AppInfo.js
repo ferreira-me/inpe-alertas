@@ -1,1 +1,1 @@
-NOME_APP = "Monitor Climático INPE2"
+const NOME_APP = 'INPE Alertas'; // ajuste o texto se quiser
