@@ -1,4 +1,4 @@
-name: CI com ESLint
+name: CI com ESLint e Testes
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [dev]
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
@@ -17,9 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Instalar dependências
-        run: npm install
+        run: npm ci || npm install
 
       - name: Rodar ESLint
         run: npx eslint .
+
+      - name: Rodar Jest
+        run: npm test
