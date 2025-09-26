@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier . -w",
+    "format:check": "prettier . -c"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.0.0",
+    "jest": "^29.7.0"
+  },
+  "jest": { "testEnvironment": "node" }
+}
