@@ -17,10 +17,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
 
       - name: Instalar dependências
-        run: npm ci || npm install
+        run: npm install
 
       - name: Rodar ESLint
         run: npx eslint .
