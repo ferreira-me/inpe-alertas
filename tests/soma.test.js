@@ -1,1 +1,1 @@
-expect(2 + 2).toBe(5); // propositalmente errado
+expect(2 + 2).toBe(4);
