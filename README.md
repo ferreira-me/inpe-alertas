@@ -1,4 +1,8 @@
-## CI/CD – INPE Alertas
+## CI/CD do Projeto INPE
+
 - Repositório privado ✔
-- Branches: main (protegida), dev, feature/* ✔
-- PRs com checks do GitHub Actions (ESLint + Prettier + Jest) ✔
+- Branches organizadas ✔
+- PRs revisados ✔
+- ESLint + Prettier ✔
+- Testes com Jest ✔
+- Pipeline automatizado ✔

@@ -2,9 +2,9 @@ name: CI - INPE Alertas
 
 on:
   push:
-    branches: ["dev", "feature/**"]
+    branches: ['dev', 'feature/**']
   pull_request:
-    branches: ["dev"]
+    branches: ['dev']
 
 jobs:
   lint-and-test:
@@ -16,8 +16,8 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"   # use 20 (ou troque p/ 18 se seu projeto precisar)
-          cache: "npm"
+          node-version: '20' # use 20 (ou troque p/ 18 se seu projeto precisar)
+          cache: 'npm'
 
       - name: Instalar dependências
         run: npm ci || npm install
