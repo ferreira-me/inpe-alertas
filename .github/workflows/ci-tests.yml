@@ -1,46 +1,46 @@
-name: CI - Tests
+name: CI
 
 on:
   push:
-    branches: [ dev, main ]
+    branches:
+      - main
+      - dev
+      - 'feature/**'
   pull_request:
-    branches: [ dev, main ]
-  workflow_dispatch: {}   # permite rodar manualmente no botão "Run workflow"
+    branches:
+      - main
+      - dev
+  workflow_dispatch: {}
 
 jobs:
   tests:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]  # LTS e recente (ajuste se quiser)
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node ${{ matrix.node-version }}
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          node-version: 20
+          cache: npm
 
+      # Se você tem package-lock.json use npm ci; se NÃO tiver, troque para "npm install"
       - name: Install deps
         run: npm ci
 
       - name: Run tests
         run: npm test
 
+      # Cobertura opcional (vira artefato para download)
       - name: Run tests with coverage
-        if: ${{ always() }}   # roda mesmo se o passo anterior falhar, útil pra ver relatórios
+        if: ${{ always() }}
         run: npm test -- --coverage
 
-      - name: Upload coverage report (artifact)
+      - name: Upload coverage
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-${{ matrix.node-version }}
+          name: coverage
           path: coverage
