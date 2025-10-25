@@ -1,0 +1,46 @@
+name: CI - Tests
+
+on:
+  push:
+    branches: [ dev, main ]
+  pull_request:
+    branches: [ dev, main ]
+  workflow_dispatch: {}   # permite rodar manualmente no botão "Run workflow"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]  # LTS e recente (ajuste se quiser)
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run tests with coverage
+        if: ${{ always() }}   # roda mesmo se o passo anterior falhar, útil pra ver relatórios
+        run: npm test -- --coverage
+
+      - name: Upload coverage report (artifact)
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.node-version }}
+          path: coverage
