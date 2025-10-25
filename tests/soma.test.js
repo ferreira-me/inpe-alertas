@@ -1,1 +1,3 @@
-expect(2 + 2).toBe(4);
+test("soma básica funciona", () => {
+  expect(2 + 2).toBe(4);
+});
